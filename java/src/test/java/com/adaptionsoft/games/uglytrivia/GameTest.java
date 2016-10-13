@@ -27,4 +27,13 @@ public class GameTest {
         assertThat(game.scienceQuestions.size(), is(50));
         assertThat(game.sportsQuestions.size(), is(50));
     }
+
+    @Test
+    public void constructor_byDefault_createsQuestionsInExpectedFormat()
+    {
+        assertThat(game.popQuestions.get(0).toString(), is("Pop Question 0"));
+        assertThat(game.rockQuestions.get(49).toString(), is("Rock Question 49"));
+        assertThat(game.scienceQuestions.get(33).toString(), is("Science Question 33"));
+        assertThat(game.sportsQuestions.get(21).toString(), is("Sports Question 21"));
+    }
 }
