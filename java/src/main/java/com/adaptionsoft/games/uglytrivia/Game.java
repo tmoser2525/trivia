@@ -19,14 +19,14 @@ public class Game {
     
     public  Game(){
     	for (int i = 0; i < 50; i++) {
-			popQuestions.addLast(createRockQuestion("Pop", i));
-			scienceQuestions.addLast(createRockQuestion("Science", i));
-			sportsQuestions.addLast(createRockQuestion("Sports", i));
-			rockQuestions.addLast(createRockQuestion("Rock", i));
+			popQuestions.addLast(createQuestion("Pop", i));
+			scienceQuestions.addLast(createQuestion("Science", i));
+			sportsQuestions.addLast(createQuestion("Sports", i));
+			rockQuestions.addLast(createQuestion("Rock", i));
     	}
     }
 
-	public String createRockQuestion(String category, int index){
+	public String createQuestion(String category, int index){
 		return category + " Question " + index;
 	}
 	
