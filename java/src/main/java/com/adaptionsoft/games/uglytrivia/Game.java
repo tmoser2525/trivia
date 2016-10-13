@@ -101,16 +101,24 @@ public class Game {
 	
 	
 	private String currentCategory() {
-		if (places[currentPlayer] == 0) return "Pop";
-		if (places[currentPlayer] == 4) return "Pop";
-		if (places[currentPlayer] == 8) return "Pop";
-		if (places[currentPlayer] == 1) return "Science";
-		if (places[currentPlayer] == 5) return "Science";
-		if (places[currentPlayer] == 9) return "Science";
-		if (places[currentPlayer] == 2) return "Sports";
-		if (places[currentPlayer] == 6) return "Sports";
-		if (places[currentPlayer] == 10) return "Sports";
-		return "Rock";
+		switch(places[currentPlayer]) {
+			case 0:
+			case 4:
+			case 8:
+				return "Pop";
+			case 1:
+			case 5:
+			case 9:
+				return "Science";
+			case 2:
+			case 6:
+			case 10:
+				return "Sports";
+			case 3:
+			case 7:
+			default:
+				return "Rock";
+		}
 	}
 
 	public boolean wasCorrectlyAnswered() {
