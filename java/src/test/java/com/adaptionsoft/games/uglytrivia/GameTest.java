@@ -55,10 +55,10 @@ public class GameTest {
     @Test
     public void constructor_byDefault_createsQuestionsInExpectedFormat()
     {
-        assertThat(game.popQuestions.get(0).toString(), is("Pop Question 0"));
-        assertThat(game.rockQuestions.get(49).toString(), is("Rock Question 49"));
-        assertThat(game.scienceQuestions.get(33).toString(), is("Science Question 33"));
-        assertThat(game.sportsQuestions.get(21).toString(), is("Sports Question 21"));
+        assertThat(game.popQuestions.get(0), is("Pop Question 0"));
+        assertThat(game.rockQuestions.get(49), is("Rock Question 49"));
+        assertThat(game.scienceQuestions.get(33), is("Science Question 33"));
+        assertThat(game.sportsQuestions.get(21), is("Sports Question 21"));
     }
 
     private void setupTwoPlayers()
