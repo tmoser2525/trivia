@@ -19,15 +19,15 @@ public class Game {
     
     public  Game(){
     	for (int i = 0; i < 50; i++) {
-			popQuestions.addLast("Pop Question " + i);
-			scienceQuestions.addLast(("Science Question " + i));
-			sportsQuestions.addLast(("Sports Question " + i));
-			rockQuestions.addLast(createRockQuestion(i));
+			popQuestions.addLast(createRockQuestion("Pop", i));
+			scienceQuestions.addLast(createRockQuestion("Science", i));
+			sportsQuestions.addLast(createRockQuestion("Sports", i));
+			rockQuestions.addLast(createRockQuestion("Rock", i));
     	}
     }
 
-	public String createRockQuestion(int index){
-		return "Rock Question " + index;
+	public String createRockQuestion(String category, int index){
+		return category + " Question " + index;
 	}
 	
 	public boolean isPlayable() {
