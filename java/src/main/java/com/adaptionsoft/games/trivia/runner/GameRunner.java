@@ -15,8 +15,14 @@ public class GameRunner {
 		aGame.add("Chet");
 		aGame.add("Pat");
 		aGame.add("Sue");
-		
-		Random rand = new Random();
+
+		Random rand;
+
+		if (args.length < 2) {
+			rand = new Random();
+		} else {
+			rand = new Random(Long.getLong(args[1], 1));
+		}
 	
 		do {
 			

@@ -12,6 +12,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
+// TODO: Capture GameRunner output and compare to a golden record
+
 /**
  * Created by clay on 10/12/16.
  */
