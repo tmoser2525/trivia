@@ -5,7 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Game {
-    ArrayList players = new ArrayList();
+
+	private List<Player> players = new ArrayList<>();
+
+    ArrayList names = new ArrayList();
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
@@ -33,7 +36,7 @@ public class Game {
 
 	public boolean add(String playerName) {
 
-	    players.add(playerName);
+	    names.add(playerName);
 	    places[howManyPlayers()] = 0;
 	    purses[howManyPlayers()] = 0;
 	    inPenaltyBox[howManyPlayers()] = false;
@@ -44,11 +47,11 @@ public class Game {
 	}
 	
 	public int howManyPlayers() {
-		return players.size();
+		return names.size();
 	}
 
 	public void roll(int roll) {
-		System.out.println(players.get(currentPlayer) + " is the current player");
+		System.out.println(names.get(currentPlayer) + " is the current player");
 		System.out.println("They have rolled a " + roll);
 		
 		if (inPenaltyBox[currentPlayer]) {
@@ -72,14 +75,14 @@ public class Game {
 		if (!isGettingOut) {
 			message = " is not getting out of the penalty box";
 		}
-		System.out.println(players.get(currentPlayer) + message);
+		System.out.println(names.get(currentPlayer) + message);
 	}
 
 	private void advancePlayerPlace(int roll) {
 		places[currentPlayer] = places[currentPlayer] + roll;
 		if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 
-		System.out.println(players.get(currentPlayer)
+		System.out.println(names.get(currentPlayer)
 				+ "'s new location is "
 				+ places[currentPlayer]);
 		System.out.println("The category is " + currentCategory());
@@ -148,7 +151,7 @@ public class Game {
 	}
 
 	private void printPurse() {
-		System.out.println(players.get(currentPlayer)
+		System.out.println(names.get(currentPlayer)
                 + " now has "
                 + purses[currentPlayer]
                 + " Gold Coins.");
@@ -161,7 +164,7 @@ public class Game {
 
 	public boolean wrongAnswer(){
 		System.out.println("Question was incorrectly answered");
-		System.out.println(players.get(currentPlayer)+ " was sent to the penalty box");
+		System.out.println(names.get(currentPlayer)+ " was sent to the penalty box");
 		inPenaltyBox[currentPlayer] = true;
 
 		setCurrentPlayer();
