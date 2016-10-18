@@ -119,26 +119,24 @@ public class Game {
 	public boolean wasCorrectlyAnswered() {
 		if (inPenaltyBox[currentPlayer]){
 			if (isGettingOutOfPenaltyBox) {
-				updatePurse("Answer was correct!!!!");
-				printPurse();
-
-				boolean winner = didPlayerWin();
-				setCurrentPlayer();
-				
-				return winner;
+				return handleCorrectAnswer("Answer was correct!!!!");
 			} else {
 				setCurrentPlayer();
 				return true;
 			}
 		} else {
-			updatePurse("Answer was corrent!!!!");
-			printPurse();
-
-			boolean winner = didPlayerWin();
-			setCurrentPlayer();
-			
-			return winner;
+			return handleCorrectAnswer("Answer was corrent!!!!");
 		}
+	}
+
+	private boolean handleCorrectAnswer(String msg) {
+		updatePurse(msg);
+		printPurse();
+
+		boolean winner = didPlayerWin();
+		setCurrentPlayer();
+
+		return winner;
 	}
 
 	private void setCurrentPlayer() {
