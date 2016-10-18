@@ -39,7 +39,7 @@ public class Game {
 	    inPenaltyBox[howManyPlayers()] = false;
 	    
 	    System.out.println(playerName + " was added");
-	    System.out.println("They are player number " + players.size());
+	    System.out.println("They are player number " + howManyPlayers());
 		return true;
 	}
 	
@@ -144,7 +144,7 @@ public class Game {
 
 	private void setCurrentPlayer() {
 		currentPlayer++;
-		if (currentPlayer == players.size()) currentPlayer = 0;
+		if (currentPlayer == howManyPlayers()) currentPlayer = 0;
 	}
 
 	private void printPurse() {
