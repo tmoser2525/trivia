@@ -24,8 +24,7 @@ public class GameTest {
     private PrintStream oldPrintStream;
 
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         game = new Game();
 
         // From StackOverflow code by Ernest Friedman-Hill
@@ -39,15 +38,13 @@ public class GameTest {
     }
 
     @After
-    public void tearDown()
-    {
+    public void tearDown() {
         // Undo outstream capture in setUp
         System.setOut(oldPrintStream);
     }
 
     @Test
-    public void constructor_byDefault_setsUpFiftyQuestionsForFourCategories()
-    {
+    public void constructor_byDefault_setsUpFiftyQuestionsForFourCategories() {
         assertThat(game.popQuestions.size(), is(50));
         assertThat(game.rockQuestions.size(), is(50));
         assertThat(game.scienceQuestions.size(), is(50));
@@ -55,148 +52,10 @@ public class GameTest {
     }
 
     @Test
-    public void constructor_byDefault_createsQuestionsInExpectedFormat()
-    {
+    public void constructor_byDefault_createsQuestionsInExpectedFormat() {
         assertThat(game.popQuestions.get(0), is("Pop Question 0"));
         assertThat(game.rockQuestions.get(49), is("Rock Question 49"));
         assertThat(game.scienceQuestions.get(33), is("Science Question 33"));
         assertThat(game.sportsQuestions.get(21), is("Sports Question 21"));
     }
-
-    private void setupTwoPlayers()
-    {
-        game.add("Alice");
-        game.add("Bob");
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace0_asksScienceQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 0;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Science Question 0") );
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace1_asksSportsQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 1;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Sports Question 0") );
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace2_asksRockQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 2;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Rock Question 0") );
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace3_asksPopQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 3;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Pop Question 0") );
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace4_asksScienceQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 4;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Science Question 0") );
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace5_asksSportsQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 5;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Sports Question 0") );
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace6_asksRockQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 6;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Rock Question 0") );
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace7_asksPopQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 7;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Pop Question 0") );
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace8_asksScienceQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 8;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Science Question 0") );
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace9_asksSportsQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 9;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Sports Question 0") );
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace10_asksRockQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 10;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Rock Question 0") );
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace11_asksPopQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 11;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Pop Question 0") );
-    }
-
-    @Test
-    public void roll_withCurrentPlayerInPlace12_asksScienceQuestion()
-    {
-        setupTwoPlayers();
-        game.currentPlayer = 0;
-        game.places[game.currentPlayer] = 12;
-        game.roll(1);
-        assertThat(baos.toString(), containsString("Science Question 0") );
-    }
-
 }
