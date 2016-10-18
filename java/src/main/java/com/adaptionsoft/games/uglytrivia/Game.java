@@ -123,13 +123,11 @@ public class Game {
 				printPurse();
 
 				boolean winner = didPlayerWin();
-				currentPlayer++;
-				if (currentPlayer == players.size()) currentPlayer = 0;
+				setCurrentPlayer();
 				
 				return winner;
 			} else {
-				currentPlayer++;
-				if (currentPlayer == players.size()) currentPlayer = 0;
+				setCurrentPlayer();
 				return true;
 			}
 		} else {
@@ -137,11 +135,15 @@ public class Game {
 			printPurse();
 
 			boolean winner = didPlayerWin();
-			currentPlayer++;
-			if (currentPlayer == players.size()) currentPlayer = 0;
+			setCurrentPlayer();
 			
 			return winner;
 		}
+	}
+
+	private void setCurrentPlayer() {
+		currentPlayer++;
+		if (currentPlayer == players.size()) currentPlayer = 0;
 	}
 
 	private void printPurse() {
@@ -160,9 +162,8 @@ public class Game {
 		System.out.println("Question was incorrectly answered");
 		System.out.println(players.get(currentPlayer)+ " was sent to the penalty box");
 		inPenaltyBox[currentPlayer] = true;
-		
-		currentPlayer++;
-		if (currentPlayer == players.size()) currentPlayer = 0;
+
+		setCurrentPlayer();
 		return true;
 	}
 
