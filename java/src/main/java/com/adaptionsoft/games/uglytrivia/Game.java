@@ -8,7 +8,6 @@ public class Game {
 
 	private List<Player> players = new ArrayList<>();
 
-    ArrayList names = new ArrayList();
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
@@ -38,7 +37,6 @@ public class Game {
 
 		players.add(new Player(playerName));
 
-	    names.add(playerName);
 	    places[howManyPlayers()] = 0;
 	    purses[howManyPlayers()] = 0;
 	    inPenaltyBox[howManyPlayers()] = false;
