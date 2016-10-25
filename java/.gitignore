@@ -1,5 +1,4 @@
+golden.txt
 target/
 .idea/
 **/*.iml
-golden.txt
-golden-*.txt
