@@ -19,19 +19,15 @@ public class Game {
     
     public  Game(){
     	for (int i = 0; i < 50; i++) {
-			popQuestions.addLast("Pop Question " + i);
-			scienceQuestions.addLast(("Science Question " + i));
-			sportsQuestions.addLast(("Sports Question " + i));
-			rockQuestions.addLast(createRockQuestion(i));
+			popQuestions.addLast(createQuestion("Pop", i));
+			scienceQuestions.addLast(createQuestion("Science", i));
+			sportsQuestions.addLast(createQuestion("Sports", i));
+			rockQuestions.addLast(createQuestion("Rock", i));
     	}
     }
 
-	private String createRockQuestion(int index){
-		return "Rock Question " + index;
-	}
-	
-	public boolean isPlayable() {
-		return (howManyPlayers() >= 2);
+	private String createQuestion(String category, int index) {
+		return category + " Question " + index;
 	}
 
 	public boolean add(String playerName) {
@@ -121,34 +117,33 @@ public class Game {
 	public boolean wasCorrectlyAnswered() {
 		if (inPenaltyBox[currentPlayer]){
 			if (isGettingOutOfPenaltyBox) {
-				getCorrectAnswer("Answer was correct!!!!");
+				handleCorrectAnswer("Answer was correct!!!!");
 				
 				boolean winner = didPlayerWin();
-				currentPlayer++;
-				if (currentPlayer == players.size()) currentPlayer = 0;
+                advanceToNextPlayer();
 				
 				return winner;
 			} else {
-				currentPlayer++;
-				if (currentPlayer == players.size()) currentPlayer = 0;
+                advanceToNextPlayer();
 				return true;
 			}
 			
-			
-			
 		} else {
-
-			getCorrectAnswer("Answer was corrent!!!!");
+			handleCorrectAnswer("Answer was corrent!!!!");
 			
 			boolean winner = didPlayerWin();
-			currentPlayer++;
-			if (currentPlayer == players.size()) currentPlayer = 0;
+            advanceToNextPlayer();
 			
 			return winner;
 		}
 	}
 
-	private void getCorrectAnswer(String victoryMessage) {
+    private void advanceToNextPlayer() {
+        currentPlayer++;
+        if (currentPlayer == players.size()) currentPlayer = 0;
+    }
+
+	private void handleCorrectAnswer(String victoryMessage) {
 		System.out.println(String.format(
 				"%s\n%s now has %d Gold Coins.",
 				victoryMessage,
@@ -161,8 +156,7 @@ public class Game {
 		System.out.println(players.get(currentPlayer)+ " was sent to the penalty box");
 		inPenaltyBox[currentPlayer] = true;
 		
-		currentPlayer++;
-		if (currentPlayer == players.size()) currentPlayer = 0;
+		advanceToNextPlayer();
 		return true;
 	}
 
