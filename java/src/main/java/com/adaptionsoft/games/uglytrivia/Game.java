@@ -150,10 +150,9 @@ public class Game {
 
 	private void getCorrectAnswer(String x) {
 		System.out.println(x);
-		purses[currentPlayer]++;
 		System.out.println(players.get(currentPlayer)
 				+ " now has "
-				+ purses[currentPlayer]
+				+ ++purses[currentPlayer]
 				+ " Gold Coins.");
 	}
 
