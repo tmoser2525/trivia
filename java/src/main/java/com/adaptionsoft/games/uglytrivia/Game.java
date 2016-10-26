@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Game {
-    ArrayList players = new ArrayList();
-    int[] places = new int[6];
-    int[] purses  = new int[6];
-    boolean[] inPenaltyBox  = new boolean[6];
+    private ArrayList players = new ArrayList();
+    private int[] places = new int[6];
+    private int[] purses  = new int[6];
+    private boolean[] inPenaltyBox  = new boolean[6];
     
-    LinkedList popQuestions = new LinkedList();
-    LinkedList scienceQuestions = new LinkedList();
-    LinkedList sportsQuestions = new LinkedList();
-    LinkedList rockQuestions = new LinkedList();
+    private LinkedList popQuestions = new LinkedList();
+    private LinkedList scienceQuestions = new LinkedList();
+    private LinkedList sportsQuestions = new LinkedList();
+    private LinkedList rockQuestions = new LinkedList();
     
-    int currentPlayer = 0;
-    boolean isGettingOutOfPenaltyBox;
+    private int currentPlayer = 0;
+    private boolean isGettingOutOfPenaltyBox;
     
     public  Game(){
     	for (int i = 0; i < 50; i++) {
@@ -26,7 +26,7 @@ public class Game {
     	}
     }
 
-	public String createRockQuestion(int index){
+	private String createRockQuestion(int index){
 		return "Rock Question " + index;
 	}
 	
@@ -47,7 +47,7 @@ public class Game {
 		return true;
 	}
 	
-	public int howManyPlayers() {
+	private int howManyPlayers() {
 		return players.size();
 	}
 
@@ -88,39 +88,40 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		if (currentCategory() == "Pop")
+		if (currentCategory().equals("Pop"))
 			System.out.println(popQuestions.removeFirst());
-		if (currentCategory() == "Science")
+		if (currentCategory().equals("Science"))
 			System.out.println(scienceQuestions.removeFirst());
-		if (currentCategory() == "Sports")
+		if (currentCategory().equals("Sports"))
 			System.out.println(sportsQuestions.removeFirst());
-		if (currentCategory() == "Rock")
+		if (currentCategory().equals("Rock"))
 			System.out.println(rockQuestions.removeFirst());		
 	}
 	
 	
 	private String currentCategory() {
-		if (places[currentPlayer] == 0) return "Pop";
-		if (places[currentPlayer] == 4) return "Pop";
-		if (places[currentPlayer] == 8) return "Pop";
-		if (places[currentPlayer] == 1) return "Science";
-		if (places[currentPlayer] == 5) return "Science";
-		if (places[currentPlayer] == 9) return "Science";
-		if (places[currentPlayer] == 2) return "Sports";
-		if (places[currentPlayer] == 6) return "Sports";
-		if (places[currentPlayer] == 10) return "Sports";
-		return "Rock";
+		switch (places[currentPlayer]) {
+			case 0:
+			case 4:
+			case 8:
+				return "Pop";
+			case 1:
+			case 5:
+			case 9:
+				return "Science";
+			case 2:
+			case 6:
+			case 10:
+				return "Sports";
+			default:
+				return "Rock";
+		}
 	}
 
 	public boolean wasCorrectlyAnswered() {
 		if (inPenaltyBox[currentPlayer]){
 			if (isGettingOutOfPenaltyBox) {
-				System.out.println("Answer was correct!!!!");
-				purses[currentPlayer]++;
-				System.out.println(players.get(currentPlayer) 
-						+ " now has "
-						+ purses[currentPlayer]
-						+ " Gold Coins.");
+				getCorrectAnswer("Answer was correct!!!!");
 				
 				boolean winner = didPlayerWin();
 				currentPlayer++;
@@ -136,13 +137,8 @@ public class Game {
 			
 			
 		} else {
-		
-			System.out.println("Answer was corrent!!!!");
-			purses[currentPlayer]++;
-			System.out.println(players.get(currentPlayer) 
-					+ " now has "
-					+ purses[currentPlayer]
-					+ " Gold Coins.");
+
+			getCorrectAnswer("Answer was corrent!!!!");
 			
 			boolean winner = didPlayerWin();
 			currentPlayer++;
@@ -151,7 +147,15 @@ public class Game {
 			return winner;
 		}
 	}
-	
+
+	private void getCorrectAnswer(String victoryMessage) {
+		System.out.println(String.format(
+				"%s\n%s now has %d Gold Coins.",
+				victoryMessage,
+				players.get(currentPlayer),
+				++purses[currentPlayer]));
+	}
+
 	public boolean wrongAnswer(){
 		System.out.println("Question was incorrectly answered");
 		System.out.println(players.get(currentPlayer)+ " was sent to the penalty box");
