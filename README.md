@@ -20,3 +20,6 @@ Getting Started
   5. If you see a yellow bar above the editor asking you to set the SDK,
      click the link and choose your most current Java SDK (probably Java
 1.8).
+
+There is also a [Refactoring Cheat Sheet](RefactoringCheatSheet.pdf)
+which you can use as a reference.
