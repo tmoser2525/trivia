@@ -15,9 +15,15 @@ public class GameRunner {
 		aGame.add("Chet");
 		aGame.add("Pat");
 		aGame.add("Sue");
-		
-		Random rand = new Random();
-	
+
+		Random rand;
+
+		if (args.length > 1) {
+			rand = new Random(Integer.valueOf(args[1]));
+		} else {
+			rand = new Random();
+		}
+
 		do {
 			
 			aGame.roll(rand.nextInt(5) + 1);
