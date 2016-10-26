@@ -148,12 +148,12 @@ public class Game {
 		}
 	}
 
-	private void getCorrectAnswer(String x) {
-		System.out.println(x);
-		System.out.println(players.get(currentPlayer)
-				+ " now has "
-				+ ++purses[currentPlayer]
-				+ " Gold Coins.");
+	private void getCorrectAnswer(String victoryMessage) {
+		System.out.println(String.format(
+				"%s\n%s now has %d Gold Coins.",
+				victoryMessage,
+				players.get(currentPlayer),
+				++purses[currentPlayer]));
 	}
 
 	public boolean wrongAnswer(){
